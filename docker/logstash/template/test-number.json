@@ -1,0 +1,23 @@
+{
+  "index_patterns": "test-number",
+  "template": {
+    "mappings": {
+      "dynamic": "strict",
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "description": {
+          "type": "keyword"
+        },
+        "@timestamp": {
+          "type": "date",
+          "format": "date_time"
+        },
+        "@version": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

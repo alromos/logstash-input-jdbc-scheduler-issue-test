@@ -1,0 +1,8 @@
+.git
+.diffblue
+.idea
+*.iws
+*.iml
+*.ipr
+.github
+*.md

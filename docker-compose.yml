@@ -1,0 +1,84 @@
+version: '3.8'
+services:
+  # DB
+  mssql:
+    build: ./docker/mssql
+    image: alromos/mssql
+    container_name: alromos-mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=ms!SQL!server
+      - SA_INIT_SCRIPT=create-database.sql
+      - DB_NAME=alromosdb
+      - DBA_USER=alromosdba
+      - DBA_PASSWORD=alroM_os!dba
+      - APP_USER=alromosapp
+      - APP_PASSWORD=alro_Mos!app
+    ports:
+      - 1434:1433
+    volumes:
+      - ./docker/mssql/initdb.d:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: sqlcmd -S localhost -U "$$DBA_USER" -P "$$DBA_PASSWORD" -d "$$DB_NAME" -Q "SELECT 1"
+      start_period: 1m
+      interval: 2s
+      timeout: 5s
+      retries: 10
+  # Liquibase
+  liquibase:
+    build: ./docker/liquibase
+    image: alromos/liquibase
+    container_name: alromos-liquibase
+    depends_on:
+      mssql:
+        condition: service_healthy
+    environment:
+      - DB_URL=jdbc:sqlserver://mssql:1433;database=alromosdb;encrypt=false
+      - DBA_USER=alromosdba
+      - DBA_PASSWORD=alroM_os!dba
+  # Elasticsearch
+  elasticsearch:
+    image: elasticsearch:8.5.1
+    container_name: alromos-elasticsearch
+    ports:
+      - 9201:9200
+      - 9301:9300
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xmx1g
+      - xpack.security.enabled=false
+    healthcheck:
+      test: curl --silent --fail localhost:9201/_cluster/health || exit 1
+      start_period: 1m
+      interval: 2s
+      timeout: 10s
+      retries: 15
+  # Kibana
+  kibana:
+    image: kibana:8.5.1
+    container_name: alromos-kibana
+    ports:
+      - 5602:5601
+    environment:
+      - JAVA_OPTS=-Xmx1g
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+  # Logstash
+  logstash:
+    build: ./docker/logstash
+    image: alromos/logstash
+    container_name: alromos-logstash
+    hostname: logstash
+    ports:
+      - 9602:9600
+    depends_on:
+      mssql:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_started
+    environment:
+      - ELASTIC_URL=http://elasticsearch:9200
+      - CONN_STR=jdbc:sqlserver://mssql:1433;database=alromosdb;userName=alromosapp;password=alro_Mos!app;encrypt=false
+      - JDBC_USER=alromosapp
