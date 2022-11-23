@@ -1,0 +1,131 @@
+{
+  "indices": [
+    {
+      "indexName": "test-number",
+      "templateFile": "test-number.json",
+      "templateName": "test-number"
+    }
+  ],
+  "pipelines": [
+    {
+      "pipelineName": "test-pipeline-1",
+      "pipelineFile": "test-pipeline-1.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-2",
+      "pipelineFile": "test-pipeline-2.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-3",
+      "pipelineFile": "test-pipeline-3.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-4",
+      "pipelineFile": "test-pipeline-4.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-5",
+      "pipelineFile": "test-pipeline-5.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-6",
+      "pipelineFile": "test-pipeline-6.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-7",
+      "pipelineFile": "test-pipeline-7.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-8",
+      "pipelineFile": "test-pipeline-8.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-9",
+      "pipelineFile": "test-pipeline-9.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-10",
+      "pipelineFile": "test-pipeline-10.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-11",
+      "pipelineFile": "test-pipeline-11.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-12",
+      "pipelineFile": "test-pipeline-12.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-13",
+      "pipelineFile": "test-pipeline-13.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-14",
+      "pipelineFile": "test-pipeline-14.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-15",
+      "pipelineFile": "test-pipeline-15.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-16",
+      "pipelineFile": "test-pipeline-16.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-17",
+      "pipelineFile": "test-pipeline-17.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-18",
+      "pipelineFile": "test-pipeline-18.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-19",
+      "pipelineFile": "test-pipeline-19.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-20",
+      "pipelineFile": "test-pipeline-20.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-21",
+      "pipelineFile": "test-pipeline-21.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-22",
+      "pipelineFile": "test-pipeline-22.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-23",
+      "pipelineFile": "test-pipeline-23.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-24",
+      "pipelineFile": "test-pipeline-24.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-25",
+      "pipelineFile": "test-pipeline-25.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-26",
+      "pipelineFile": "test-pipeline-26.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-27",
+      "pipelineFile": "test-pipeline-27.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-28",
+      "pipelineFile": "test-pipeline-28.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-29",
+      "pipelineFile": "test-pipeline-29.conf"
+    },
+    {
+      "pipelineName": "test-pipeline-30",
+      "pipelineFile": "test-pipeline-30.conf"
+    }
+  ]
+}
