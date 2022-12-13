@@ -55,6 +55,14 @@ def copyCompiledFilesToLogstash() {
     new File("/usr/share/logstash/template/test-number.json").text =
             new File("/usr/share/logstash/alromos/template/test-number.json").text
 
+    // Adding a pipeline with scheduled http poll plugin
+    String httpPollPipelineName = "http-poll-pipeline"
+    GString httpPollPipelineConfigFilePath = "/usr/share/logstash/pipeline/${httpPollPipelineName}.conf"
+    new File(httpPollPipelineConfigFilePath).text =
+            new File("/usr/share/logstash/alromos/pipeline/http-poll-pipeline.conf").text
+    lsConfigurationFile.text += "\n- pipeline.id: $httpPollPipelineName"
+    lsConfigurationFile.text += "\n  path.config: \"$httpPollPipelineConfigFilePath\""
+
     File lsGlobalConfigFile = new File("/usr/share/logstash/config/logstash.yml")
     lsGlobalConfigFile.text =
             """
