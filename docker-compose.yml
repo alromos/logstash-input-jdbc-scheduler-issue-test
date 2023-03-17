@@ -48,7 +48,7 @@ services:
       - ES_JAVA_OPTS=-Xmx1g
       - xpack.security.enabled=false
     healthcheck:
-      test: curl --silent --fail localhost:9201/_cluster/health || exit 1
+      test: curl --silent --fail localhost:9200/_cluster/health || exit 1
       start_period: 1m
       interval: 2s
       timeout: 10s
@@ -74,10 +74,10 @@ services:
     ports:
       - 9602:9600
     depends_on:
-      mssql:
-        condition: service_healthy
+      liquibase:
+        condition: service_completed_successfully
       elasticsearch:
-        condition: service_started
+        condition: service_healthy
     environment:
       - ELASTIC_URL=http://elasticsearch:9200
       - CONN_STR=jdbc:sqlserver://mssql:1433;database=alromosdb;userName=alromosapp;password=alro_Mos!app;encrypt=false
